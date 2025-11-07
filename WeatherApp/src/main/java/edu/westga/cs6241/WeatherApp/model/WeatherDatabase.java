@@ -21,22 +21,30 @@ public class WeatherDatabase implements WeatherAPI {
 
     public static WeatherDatabase from(String filename) throws IOException {
         List<DailySummary> summaries = new ArrayList<>();
+
         try (Reader reader = Files.newBufferedReader(Paths.get(filename))) {
             CSVParser parser = CSVFormat.DEFAULT
-                .withHeader("stationName", "date", "precip", "hiTemp", "loTemp")
-                .withSkipHeaderRecord()
-                .parse(reader);
+                    .withFirstRecordAsHeader()
+                    .parse(reader);
 
             for (CSVRecord record : parser) {
-                summaries.add(new DailySummary(
-                    record.get("stationName"),
-                    LocalDate.parse(record.get("date")),
-                    Double.parseDouble(record.get("precip")),
-                    Integer.parseInt(record.get("hiTemp")),
-                    Integer.parseInt(record.get("loTemp"))
-                ));
+                String stationName = record.get("NAME");          // or "STATION" if you prefer
+                LocalDate date = LocalDate.parse(record.get("DATE"));
+                double precip = Double.parseDouble(record.get("PRCP"));
+                int hiTemp = Integer.parseInt(record.get("TMAX"));
+                int loTemp = Integer.parseInt(record.get("TMIN"));
+
+                DailySummary ds = new DailySummary(
+                        stationName,
+                        date,
+                        precip,
+                        hiTemp,
+                        loTemp
+                );
+                summaries.add(ds);
             }
         }
+
         return new WeatherDatabase(summaries);
     }
 
