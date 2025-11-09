@@ -26,7 +26,7 @@ class TestYearSelection {
 
         assertTrue(strat.matches(theDailySummary));
 
-        // Only date should be consulted
+
         verify(theDailySummary, times(1)).getDate();
         verify(theDailySummary, never()).getStationName();
         verify(theDailySummary, never()).getPrecip();
@@ -49,7 +49,7 @@ class TestYearSelection {
 
     @Test
     void matchesThrowsWhenDateIsNull() {
-        // If your contract allows/denies null, test accordingly.
+
         DailySummary theDailySummary = mock(DailySummary.class);
         when(theDailySummary.getDate()).thenReturn(null);
 
