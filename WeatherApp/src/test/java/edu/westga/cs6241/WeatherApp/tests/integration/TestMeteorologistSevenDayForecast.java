@@ -20,7 +20,7 @@ class TestMeteorologistSevenDayForecast {
 	    }
 	
 	 @Test
-	    void sevenDayForecast_returnsExactlySevenWhenAvailable(@TempDir Path tmp) throws IOException {
+	    void sevenDayForecastReturnsExactlySevenWhenAvailable(@TempDir Path tmp) throws IOException {
 	        Path csv = tmp.resolve("wx.csv");
 	        var sb = new StringBuilder("NAME,DATE,PRCP,TMAX,TMIN\n");
 	        for (int d = 1; d <= 10; d++) {
@@ -39,7 +39,7 @@ class TestMeteorologistSevenDayForecast {
 	    }
 
 	    @Test
-	    void sevenDayForecast_shorterNearEndOfData(@TempDir Path tmp) throws IOException {
+	    void sevenDayForecastShorterNearEndOfData(@TempDir Path tmp) throws IOException {
 	        Path csv = tmp.resolve("wx.csv");
 	        write(csv,
 	        	"NAME,DATE,PRCP,TMAX,TMIN\n" +
@@ -59,7 +59,7 @@ class TestMeteorologistSevenDayForecast {
 	    }
 
 	    @Test
-	    void sevenDayForecast_emptyWhenStartDateMissing(@TempDir Path tmp) throws IOException {
+	    void sevenDayForecastEmptyWhenStartDateMissing(@TempDir Path tmp) throws IOException {
 	        Path csv = tmp.resolve("wx.csv");
 	        write(csv,
 	        	"NAME,DATE,PRCP,TMAX,TMIN\n" +
