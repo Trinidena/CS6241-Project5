@@ -36,7 +36,7 @@ class TestYearSelection {
     }
 
     @Test
-    void matches_returnsFalse_whenYearDiffers() {
+    void matchesReturnsFalseWhenYearDiffers() {
         DailySummary theDailySummary = mock(DailySummary.class);
         when(theDailySummary.getDate()).thenReturn(LocalDate.of(2024, 12, 31));
 
@@ -48,7 +48,7 @@ class TestYearSelection {
     }
 
     @Test
-    void matches_throwsWhenDateIsNull() {
+    void matchesThrowsWhenDateIsNull() {
         // If your contract allows/denies null, test accordingly.
         DailySummary theDailySummary = mock(DailySummary.class);
         when(theDailySummary.getDate()).thenReturn(null);
@@ -61,7 +61,7 @@ class TestYearSelection {
     }
 
     @Test
-    void matches_throwsWhenDailySummaryIsNull() {
+    void matchesThrowsWhenDailySummaryIsNull() {
         YearSelection strat = new YearSelection(2025);
         assertThrows(NullPointerException.class, () -> strat.matches(null));
     }
