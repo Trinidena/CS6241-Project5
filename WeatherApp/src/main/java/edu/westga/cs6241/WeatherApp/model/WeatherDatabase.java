@@ -25,17 +25,19 @@ public class WeatherDatabase implements WeatherAPI {
         try (Reader reader = Files.newBufferedReader(Paths.get(filename))) {
             CSVParser parser = CSVFormat.DEFAULT
                     .withFirstRecordAsHeader()
+                    .withIgnoreHeaderCase()
+                    .withTrim()
                     .parse(reader);
 
             for (CSVRecord record : parser) {
-                String stationName = record.get("NAME");
+                String Name = record.get("NAME");
                 LocalDate date = LocalDate.parse(record.get("DATE"));
                 double precip = Double.parseDouble(record.get("PRCP"));
                 int hiTemp = Integer.parseInt(record.get("TMAX"));
                 int loTemp = Integer.parseInt(record.get("TMIN"));
 
                 DailySummary ds = new DailySummary(
-                        stationName,
+                        Name,
                         date,
                         precip,
                         hiTemp,
