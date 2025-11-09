@@ -28,7 +28,7 @@ public class WeatherDatabase implements WeatherAPI {
                     .parse(reader);
 
             for (CSVRecord record : parser) {
-                String stationName = record.get("NAME");          // or "STATION" if you prefer
+                String stationName = record.get("NAME");
                 LocalDate date = LocalDate.parse(record.get("DATE"));
                 double precip = Double.parseDouble(record.get("PRCP"));
                 int hiTemp = Integer.parseInt(record.get("TMAX"));
