@@ -1,6 +1,7 @@
 package edu.westga.cs6241.WeatherApp.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -31,7 +32,7 @@ public class Meteorologist {
 
     public List<DailySummary> sevenDayForecast(String station, int year, int month, int day) {
         LocalDate start = LocalDate.of(year, month, day);
-        List<DailySummary> all = api.queryBy(ds -> ds.getStationName().equals(station));
+        List<DailySummary> all = new ArrayList<>(api.queryBy(ds -> ds.getStationName().equals(station)));
         all.sort(Comparator.comparing(DailySummary::getDate));
         int index = IntStream.range(0, all.size())
                 .filter(i -> all.get(i).getDate().equals(start))
