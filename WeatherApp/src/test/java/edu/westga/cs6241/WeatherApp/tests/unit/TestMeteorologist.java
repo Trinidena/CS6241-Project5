@@ -19,7 +19,7 @@ import edu.westga.cs6241.WeatherApp.model.SelectionStrategy;
 import edu.westga.cs6241.WeatherApp.model.WeatherAPI;
 
 
-class TestMeteorologistFindGlobalHiTemp {
+class TestMeteorologist {
 	
 	private WeatherAPI mockAPI;
 	private Meteorologist theMeterologist;
