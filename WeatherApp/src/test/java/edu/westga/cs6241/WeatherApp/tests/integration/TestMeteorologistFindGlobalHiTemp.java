@@ -20,7 +20,7 @@ class TestMeteorologistFindGlobalHiTemp {
     }
 
     @Test
-    void findGlobalHiTemp_maxAcrossStationsSameYear(@TempDir Path tmp) throws IOException {
+    void findGlobalHiTempMaxAcrossStationsSameYear(@TempDir Path tmp) throws IOException {
         Path csv = tmp.resolve("wx.csv");
         write(csv,
         	"NAME,DATE,PRCP,TMAX,TMIN\n" +
@@ -38,7 +38,7 @@ class TestMeteorologistFindGlobalHiTemp {
     }
 
     @Test
-    void findGlobalHiTemp_handlesTies(@TempDir Path tmp) throws IOException {
+    void findGlobalHiTempHandlesTies(@TempDir Path tmp) throws IOException {
         Path csv = tmp.resolve("wx.csv");
         write(csv,
         	"NAME,DATE,PRCP,TMAX,TMIN\n" +

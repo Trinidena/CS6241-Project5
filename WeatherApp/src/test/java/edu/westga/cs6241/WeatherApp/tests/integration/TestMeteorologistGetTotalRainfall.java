@@ -19,7 +19,7 @@ class TestMeteorologistGetTotalRainfall {
 	    }
 	
 	@Test
-    void getTotalRainfall_sumsByStationAndYear(@TempDir Path tmp) throws IOException {
+    void getTotalRainfallSumsByStationAndYear(@TempDir Path tmp) throws IOException {
         Path csv = tmp.resolve("wx.csv");
         write(csv,
         	"NAME,DATE,PRCP,TMAX,TMIN\n" +
@@ -37,7 +37,7 @@ class TestMeteorologistGetTotalRainfall {
     }
 
     @Test
-    void getTotalRainfall_zeroWhenNoMatches(@TempDir Path tmp) throws IOException {
+    void getTotalRainfallZeroWhenNoMatches(@TempDir Path tmp) throws IOException {
         Path csv = tmp.resolve("wx.csv");
         write(csv,
         	"NAME,DATE,PRCP,TMAX,TMIN\n" +
@@ -51,7 +51,7 @@ class TestMeteorologistGetTotalRainfall {
     }
 
     @Test
-    void getTotalRainfall_fractionBehaviorIsDeterministic(@TempDir Path tmp) throws IOException {
+    void getTotalRainfallFractionBehaviorIsDeterministic(@TempDir Path tmp) throws IOException {
         Path csv = tmp.resolve("wx.csv");
         write(csv,
         	"NAME,DATE,PRCP,TMAX,TMIN\n" +
