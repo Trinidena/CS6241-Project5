@@ -97,7 +97,7 @@ class TestStationAndYearSelection {
 	    @Test
 	    void matchesThrowsNpeWhenSummaryStationIsNull() {
 	        DailySummary ds = mock(DailySummary.class);
-	        when(ds.getStationName()).thenReturn(null); // this triggers NPE in .equals(station)
+	        when(ds.getStationName()).thenReturn(null);
 
 	        var strat = new StationAndYearSelection("ATL", 2025);
 

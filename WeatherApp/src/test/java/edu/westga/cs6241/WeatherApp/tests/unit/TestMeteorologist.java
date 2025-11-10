@@ -107,7 +107,7 @@ class TestMeteorologist {
 	    void sevenDayForecast_returnsEmptyWhenStartDateNotPresent() {
 	        when(mockAPI.queryBy(any())).thenReturn(List.of(
 	        	theDailySummary("ATL","2025-03-01",0.0,60,40),
-	            theDailySummary("ATL","2025-03-03",0.0,62,42) // 03-02 missing, and we ask for 03-02
+	            theDailySummary("ATL","2025-03-03",0.0,62,42) 
 	        ));
 
 	        var out = theMeterologist.sevenDayForecast("ATL", 2025, 3, 2);
