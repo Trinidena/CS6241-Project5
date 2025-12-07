@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.time.LocalDate?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="root"
+           xmlns="http://javafx.com/javafx"
+           xmlns:fx="http://javafx.com/fxml"
+           fx:controller="edu.westga.cs6241.WeatherApp.view.ForecastController">
+
+    <top>
+        <VBox spacing="5">
+            <MenuBar>
+                <menus>
+                    <Menu text="File">
+                        <items>
+                            <MenuItem text="Open CSV..."
+                                      onAction="#handleOpenCsv"/>
+                        </items>
+                    </Menu>
+                </menus>
+            </MenuBar>
+
+				<HBox spacing="10">
+				    <padding>
+				        <Insets top="10" right="10" bottom="10" left="10"/>
+				    </padding>
+				    <children>
+				        <ComboBox fx:id="stationCombo" promptText="Select station" prefWidth="180"/>
+				        <DatePicker fx:id="datePicker" promptText="Start date"/>
+				        <Button fx:id="useFirstDateButton"
+				                text="Use first date for station"
+				                onAction="#handleUseFirstDateForStation"/>
+				    </children>
+				</HBox>
+
+            <Separator/>
+        </VBox>
+    </top>
+
+    <center>
+        <TableView fx:id="forecastTable">
+            <columns>
+                <TableColumn fx:id="dateColumn" text="Date" prefWidth="120"/>
+                <TableColumn fx:id="stationColumn" text="Station" prefWidth="140"/>
+                <TableColumn fx:id="hiColumn" text="Hi (°F)" prefWidth="80"/>
+                <TableColumn fx:id="loColumn" text="Lo (°F)" prefWidth="80"/>
+                <TableColumn fx:id="precipColumn" text="Precip" prefWidth="80"/>
+            </columns>
+        </TableView>
+    </center>
+
+    <bottom>
+        <GridPane hgap="10" vgap="5">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+
+            <columnConstraints>
+                <ColumnConstraints halignment="RIGHT"/>
+                <ColumnConstraints minWidth="120"/>
+                <ColumnConstraints halignment="RIGHT"/>
+                <ColumnConstraints minWidth="80"/>
+            </columnConstraints>
+
+            <children>
+                <Label text="Selected station:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <Label fx:id="selectedStationLabel" text="-" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                <Label text="Start date:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <Label fx:id="selectedDateLabel" text="-" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                <Label text="Day 1 Hi:" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+                <Label fx:id="selectedHiLabel" text="-" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
+
+                <Label text="Day 1 Lo:" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+                <Label fx:id="selectedLoLabel" text="-" GridPane.rowIndex="1" GridPane.columnIndex="3"/>
+
+                <Label text="Day 1 Precip:" GridPane.rowIndex="2" GridPane.columnIndex="2"/>
+                <Label fx:id="selectedPrecipLabel" text="-" GridPane.rowIndex="2" GridPane.columnIndex="3"/>
+            </children>
+        </GridPane>
+    </bottom>
+</BorderPane>
